@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- <link rel="shortcut icon" href="./favicon.ico"> -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" type="text/css" href="./css/sm.min.css?time=" +new Date().getTime() />
+    <!-- <link rel="stylesheet" type="text/css" href="./css/discover-detail.css?time=" +new Date().getTime() /> -->
+    <link rel="stylesheet" href="./css/reset.css?time=" +new Date().getTime() />
+    <style type="text/css">
+        .page,
+        .page-group {
+            background-color: rgb(246,246,246);
+
+        }
+
+        .content {
+            background-color: white;
+            padding: 22px 17px;
+        }
+
+        .content-top {
+            height: 100px;
+            padding: 5% 0;
+            margin-bottom: 10px;
+            background: url('img/banner_found@2x.png') no-repeat 100% center;
+            background-size: cover;
+            height: 8rem;
+        }
+
+        .content-top-title {
+            text-align: center;
+            color: rgb(51,51,51);
+            font-size: 14px;
+        }
+        .title{
+            text-align: left;
+            font-size: 18px;
+            color: rgb(51,51,51);
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .title-top{
+            font-weight: 600;
+            font-size: 20px;
+            color: rgb(51,51,51);
+        }
+       .time{
+            margin-top: 16px;
+            color: rgb(153,153,153);
+            font-size: 13px;
+        }
+        .details-content>p{
+            font-size: 14px;
+            color: rgb(51,51,51);
+            line-height: 22px;
+            text-indent: 2em;
+        }
+        .details-img{
+            width: 100%;
+            position: relative;
+            top: 0;
+        }
+        .details-img>img{
+            width: 7.5rem;
+            height: 4.65rem;
+            display: block;
+            margin: 0 auto;
+        }
+        .tips{
+            display: block;
+            width: 100%;
+            color: rgb(51,51,51);
+            font-size: 14px;
+            text-indent: 2em;
+            line-height: 22px;
+            margin-top: 12px;
+        }
+       .content-title,.p {
+            width: 100%;
+            font-size: 14px;
+            color: rgb(51,51,51);
+            margin-top: 30px;
+            text-indent: 2em;
+            line-height: 22px;
+        }
+        .p {
+            margin-top: 0px;
+        }
+        
+    </style>
+</head>
+
+<body style="overflow-y:auto">
+    <div class="page-group">
+        <div class="page page-current">
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left backClass" href="javascript:void(0);" data-transition='slide-out'>
+                    <span class="icon icon-left" style="color: #333;"></span>
+                </a>
+                <h1 class="title" style="color: #333;text-indent: 40px;">申请信用卡填表怎么填？手把手教你申请高额信用卡！</h1>
+            </header>
+            <div class="content">
+                <div class="title-box">
+                    <h4 class="title-top">申请信用卡填表怎么填？手把手教你申请高额信用卡！</h4>
+                    <div class="time">2018-09-24</div>
+                </div>
+                <div class="details-content">
+                    <p>
+                        我们申请信用卡的时候都是需要填写自己的个人信息的，即是填写信用卡申请表，这不仅关系着我们申卡的成败，
+                        而且会影响信用卡的额度。下面，小飞虎手把手教大家填表申请高额信用卡。</p>
+                    <div class="details-img"><img src="./img/pic_new1@2x.png" alt="">
+                        <div class="tips">信用卡申请表这样填能提高额度</div>
+                    </div>
+                    <div class="tips-content">
+                        <div class="content-title">
+							1、联系方式
+						</div>
+						<div class="p">
+							填写常用的手机号码，一定要保证银行电话联系审核的时候能够及时接听。固定电话一般都不是必填的，但是最好写上，正常来说，现在这个时代有家庭电话的说明，家庭收入稳定性比较高。
+                        </div>
+                        <div class="content-title">
+							2、学历信息
+						</div>
+						<div class="p">
+							学历高在银行来说肯定是要加分的，正常本科及以上，工作后也是可以通过远程教育或者夜大等方式来提高自己学历的。
+                        </div>
+                        <div class="content-title">
+							3、住宅情况
+						</div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type='text/javascript' src="./js/zepto.min.js?time=" +new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/sm.min.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/popup.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/base64.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script>
+    // 判断返回按钮
+	var back = getUrlParms("back")
+
+    function backClass() {
+        if (back != 4) {
+            $('.backClass').addClass("back")
+        } else {
+            $('.backClass').addClass("backto")
+
+        }
+    }
+    backClass()
+    // 调取APP方法返回入口页面
+    $(".backto").click(function () {
+        window.location.href = 'discover.html'
+    })
+    var title = "";
+    var id = getUrlParms("id");
+    $.ajax({
+		type: "GET",
+		url:'news.json',
+		dataType: 'json',
+        async:false,
+		success: function (data) {
+            console.log(data)
+            var oLi = "";
+            $.each(data,function(i,obj){
+               if(id == i){
+                   console.log(i)
+                   $('.title').html(obj.title);
+                   $('.title-top').html(obj.title);
+                   $('.time').html(obj.time);
+                   $('.details-content>p').html(obj.littleContent);
+                   $('.tips').html(obj.content[0].tips)
+                   var str = "";
+                    // $.each(obj.content[0].listTitle, function (j,item) { 
+
+                    //     str += `<div class="content-title">
+					// 		`+ item+`
+					// 	</div>
+					// 	<div class="p">
+					// 		填写常用的手机号码，一定要保证银行电话联系审核的时候能够及时接听。固定电话一般都不是必填的，但是最好写上，正常来说，现在这个时代有家庭电话的说明，家庭收入稳定性比较高。
+                    //     </div>
+                    //     <div class="content-title">
+					// 		2、学历信息
+					// 	</div>
+					// 	<div class="p">
+					// 		学历高在银行来说肯定是要加分的，正常本科及以上，工作后也是可以通过远程教育或者夜大等方式来提高自己学历的。
+                    //     </div>
+                    //     <div class="content-title">
+					// 		3、住宅情况
+					// 	</div>                     `
+                    // $('.tips-content').append(str);
+                    //  })
+               }
+            })
+		},
+		error: function (error) {
+            console.log(error)
+		}
+	});
+
+</script>
+
+</html>

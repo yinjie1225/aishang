@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- <link rel="shortcut icon" href="./favicon.ico"> -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" type="text/css" href="./css/sm.min.css?time=" +new Date().getTime() />
+    <link rel="stylesheet" type="text/css" href="./css/details.css?time=" +new Date().getTime() />
+    <link rel="stylesheet" href="./css/reset.css?time=" +new Date().getTime() />
+    <style type="text/css">
+        .page,
+        .page-group {
+            background-color: rgb(246, 246, 246);
+        }
+        .page{
+            display: none;
+        }
+        .content {
+            background-color: rgb(246, 246, 246);
+        }
+
+        .content-top-title {
+            text-align: center;
+            color: rgb(51, 51, 51);
+            font-size: 14px;
+        }
+
+        .title_detail {
+            color: rgb(255, 99, 106);
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .content-top {
+            height: 100px;
+            padding: 5% 0;
+            margin-bottom: 10px;
+
+        }
+
+        table {
+            background-color: #fff;
+            font-size: 16px !important;
+            width: 100%;
+            padding-left: 50px;
+            font-family: '微软雅黑';
+            /* display: none; */
+        }
+
+        th {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        thead,
+        tr {
+            border-bottom: 1px solid #f6f6f6;
+            height: 40px;
+            line-height: 40px;
+        }
+
+        .font {
+            color: #666;
+        }
+
+        tr>td {
+            text-align: text;
+            padding-left: 30px;
+            color: #999;
+            font-size: 13px;
+        }
+
+
+        .amount {
+            color: #333;
+        }
+
+        #bomb {
+            overflow: hidden;
+            font-size: 14px;
+        }
+
+        #bot {
+            margin-top: 10px;
+            background-color: white;
+            height: 40px;
+            line-height: 40px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .bot_title {
+            padding-left: 20px;
+        }
+
+        #guanxi {
+            border: none;
+            width: 50px;
+            background-color: white;
+        }
+
+        .list-block {
+            margin-top: 0;
+        }
+
+        .buttons button {
+            width: 93%;
+            height: 2.25rem;
+            color: #FFFFFF;
+            line-height: 2.25rem;
+            text-align: center;
+            display: block;
+            margin: 1.875rem auto;
+            border-radius: 0.25rem;
+            border: 0;
+        }
+        .item-content{
+            background: white;
+        }
+
+
+        /* 123 */
+        
+		.table {
+			background-color: #fff;
+			font-size: 16px !important;
+			width: 100%;
+			padding-left: 10px;
+			font-family: '微软雅黑';
+		}
+
+		.font,
+		.accrual {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.thead {
+			font-size: 12px;
+			font-weight: 500;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.thead>span {
+			color: #999;
+			font-size: 14px;
+		}
+
+		.font>li {
+			height: 40px;
+			line-height: 40px;
+			font-size: 14px;
+			font-weight: 500;
+			color: #333;
+			display: flex;
+			justify-content: space-between;
+		}
+
+
+		.accrual>li {
+			width: 100%;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.accrual>li>span {
+			font-size: 12px;
+			color: #999;
+		}
+
+		.list>span {
+			color: #333333;
+		}
+
+		.cloumFirst {
+			width: 35%;
+			padding-left: 10px;
+		}
+
+		.cloumSec {
+			width: 35%;
+			text-indent: 5px;
+		}
+
+		.cloumThird {
+			width: 30%;
+			text-align: right;
+			padding-right: 10px;
+        }
+        .pop-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 80%;
+			background-color: #fff;
+			transform: translate(-50%, -50%);
+			border-radius: 0.5rem;
+		}
+
+		.pop-text {
+			width: 100%;
+			padding: 0.5rem 1.5rem;
+			font-size: 0.9rem;
+			border-bottom: 1px solid #ffc7c2;
+			text-align: center;
+			line-height: 2rem;
+		}
+
+        .pop-buttons a {
+			width: 90%;
+			height: 2.355rem;
+			line-height: 2.355rem;
+			text-align: center;
+			display: inline-block;
+			border-radius: 2.0rem;
+			background: #ff636a;
+			color: white;
+			margin-left: 5%;
+			margin-bottom: 10px;
+        }
+        .detail {
+			/* height: 5rem; */
+			border-bottom: 1px solid #ffc7c2;
+			overflow: hidden;
+			display: flex;
+			justify-content: space-between
+		}
+
+		.detail_left,
+		.detail_right {
+			width: 50%;
+			text-align: center;
+			padding: 10px;
+			font-size: 14px;
+			color: #999;
+		}
+
+		.detail_left>p,
+		.detail_right>p {
+			color: #ff636a;
+			font-size: 0.9rem;
+		}
+
+    </style>
+</head>
+
+<body style="overflow-y:auto">
+    <div class="page-group">
+        <div class="page page-current">
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left backClass" href="javascript:void(0);" data-transition='slide-out'>
+                    <span class="icon icon-left" style="color: #333;"></span>
+                </a>
+                <h1 class="title" style="color: #333;">快捷还款</h1>
+            </header>
+            <div class="content">
+                <div class="content-top" style="background-color:white;">
+                    <div class="content-top-title">还款金额(元)</div>
+                    <div class="title_detail" id="repayMoneny">1845.26</div>
+                </div>
+                <div id="bot" class="item-content item-link">
+                    <div class="bot_title">消费(笔数)：代付(笔数)</div>
+                    <div name="guanxi">
+                        <span id="guanxi">1</span>
+                        <span class="icon icon-right" style="margin-right:10px;"></span>
+                    </div>
+                    <!-- <img src="./img/icon_an@2x.png" alt="" width="16" height="16"> -->
+                </div>
+                <div class="list-block">
+                    <!-- <ul>
+                        <li class="item-content item-link">
+                            <div class="item-media">
+                                <i class="icon icon-f7"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">1</div>
+                                <div class="item-center">￥515.09</div>
+                                <div class="item-after">09-10 17:03</div>
+                            </div>
+                        </li>
+                        <table class="table table-bordered table-striped">
+                            <thead class="font">
+                                <tr>
+                                    <th style="width: 30%;color:#999;text-align: left;padding-left: 30px;">笔数</th>
+                                    <th style="width: 32%;color:#999;text-align:left;">还款金额</th>
+                                    <th style="color:#999;" class="code">还款时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="alignment">
+                                        <code>1</code>
+                                    </td>
+                                    <td>¥34.93</td>
+                                    <td class="code">
+                                        09-10 17:15
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table> 
+                        <li class="item-content item-link">
+                            <div class="item-media">
+                                <i class="icon icon-f7"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">2</div>
+                                <div class="item-center">￥515.09</div>
+                                <div class="item-after">09-10 17:03</div>
+                            </div>
+                        </li>
+                    </ul> -->
+                </div>
+                <div class="buttons" id="btnSubmit">
+                    <button class="buttonActive"> 关闭</button>
+                </div>
+            </div>
+        </div>
+        <div class="popup pop-demo">
+                <div class="pop-content">
+                    <div class="pop-text">
+                        计划详情
+                    </div>
+                    <div class="detail">
+                        <div class="detail_left">
+                            分期金额
+                            <p>3000.00</p>
+                        </div>
+                        <div class="detail_right">
+                            分期明细
+                            <p>2期</p>
+                        </div>
+                    </div>
+                    <div class="table table-borde#ff636a table-striped">
+                        <!-- <ul class="font">
+                            <li class="thead">
+                                <span class="cloumFirst">期数</span>
+                                <span class="cloumSec">还款日期</span>
+                                <span class="cloumThird">还款金额</span>
+                            </li>
+                            <li class="list">
+                                <span class="cloumFirst">第一期</span>
+                                <span class="cloumSec">2017-07-20</span>
+                                <span class="cloumThird">￥1860.00</span>
+                            </li>
+                            <ul class="accrual">
+                                <li>
+                                    <span class="cloumFirst">利息</span>
+                                    <span class="cloumSec"></span>
+                                    <span class="cloumThird">￥12</span>
+                                </li>
+                                <li>
+                                    <span class="cloumFirst">账户管理费</span>
+                                    <span class="cloumSec"></span>
+                                    <span class="cloumThird">￥98</span>
+                                </li>
+                                <li>
+                                    <span class="cloumFirst">风险管理费</span>
+                                    <span class="cloumSec"></span>
+                                    <span class="cloumThird">￥260</span>
+                                </li>
+                            </ul>
+                            <li class="list">
+                                <span class="cloumFirst">第二期</span>
+                                <span class="cloumSec">2017-07-20</span>
+                                <span class="cloumThird">￥1860.00</span>
+                            </li>
+                        </ul> -->
+                    </div>
+                    <div class="pop-buttons">
+                        <a href="javascript:;" id="close-popup" class="close-popup">我知道了</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+<script type='text/javascript' src="./js/zepto.min.js?time=" +new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/sm.min.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/popup.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/base64.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script>
+    // 判断返回按钮
+    var back = getUrlParms("back")
+
+    function backClass() {
+        if (back != 4) {
+            $('.backClass').addClass("back")
+        } else {
+            $('.backClass').addClass("backto")
+        }
+    }
+
+    backClass()
+
+    // var repaycode = '2';
+    // test(repaycode,details)
+
+    var aa = AndroidJavascriptInterface.getRepaycode();
+    var bb = AndroidJavascriptInterface.getDetails();
+
+    function test2(aa,bb) {
+        console.log(bb);
+        var details = bb;
+        $('#repayMoneny').html((parseInt(details.retData.amount)).toFixed(2));
+        var listItem = "";
+        if(aa == '1'){
+            // 余额
+            $('.page').css("display","block");
+            $('#guanxi').html(aa);
+            $.each(details.retData.resultList, function (i, obj) {
+            listItem +=
+                    `<li class="item-content item-link">
+                        <div class="item-media">
+                            <i class="icon icon-f7"></i>
+                        </div>
+                        <div class="item-inner">
+                            <div class="item-title">` +
+                    obj.id +
+                    `</div>
+                            <div class="item-center">￥` + (
+                        obj.repaymentAmount / 100).toFixed(2) +
+                    `</div>
+                            <div class="item-after" style="width:10%"></div>
+                        </div>
+                    </li>`
+                var pagePlanTime = obj.pagePlanTime
+                listItem +=
+                    `<table class="table table-bordered table-striped">
+                        <thead class="font">
+                            <tr>
+                                <th style="width: 30%;color:#999;text-align: left;padding-left: 30px;">笔数</th>
+                                <th style="color:#999;text-align:left;padding-left:30px;">还款金额</th>
+                                <th style="color:#999;" class="code">还款时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>`
+                $.each(obj.consList, function (j, value) {
+                    console.log(value.index)
+                    listItem +=
+                        ` <tr>
+                            <td class="alignment">
+                                <code>` +
+                        value.id +
+                        `</code>
+                            </td>
+                            <td>¥` +
+                        (value.consAmount / 100).toFixed(2) +
+                        `</td>
+                            <td class="code">
+                                ` +
+                        value.time +
+                        `
+                            </td>
+                        </tr>`
+                })
+                listItem += `</tbody></table> `
+            })
+        } else if(aa == '2') {
+            // 垫子
+            // alert(2)
+            $('.page').css("display","none");
+            $.popup(".pop-demo");
+            var payPlan = details.retData;
+            var PayMsg = details.retMsg;
+            var date = getNowFormatDate();
+            console.log(date)
+            // that.payPlan()
+            $('.detail>.detail_left>p').html(payPlan.amount)
+            $('.detail>.detail_right>p').html(payPlan.data.length + '期')
+            var tempStr =
+                `<ul class="font">
+                <li class="thead">
+                    <span class="cloumFirst">期数</span>
+                    <span class="cloumSec">还款日期</span>
+                    <span class="cloumThird">还款金额</span>
+                </li>`;
+            var num = 1;
+            var tempSubstr = '';
+
+            $.each(payPlan.data, function (i, obj) {
+                // console.log(obj);
+                tempStr += `<li class="list">
+                    <span class="cloumFirst">第` + num +
+                    `期</span>
+                    <span class="cloumSec">` +
+                    date + `</span>
+                    <span class="cloumThird"> ￥` + obj.bramount + `</span>
+                </li>
+            `
+                tempStr += `<ul class="accrual">`;
+                if (!(num > payPlan.num)) {
+                    num++;
+                }
+                $('.table').html(tempStr)
+                $.each(obj.chargeorder, function (j, value) {
+                    console.log(value)
+                    tempStr += `<li>
+                        <span class="cloumFirst">` + value.handle +
+                        `</span>
+                        <span class="cloumSec"></span>
+                        <span class="cloumThird">` + value.chamount +
+                        `</span>
+                    </li>`
+                })
+                tempStr += `</ul>`;
+            })
+            tempStr += `</ul>`
+            $('.table').html(tempStr)
+            $('.list').on('click', function(){
+                // var ifHide = $(this).next().show();
+                // console.log(ifHide)
+                if($(this).next().show()){
+                    $(this).next().hide()
+                }else{
+                    $(this).next().show()
+                }
+            })
+        }
+        listItem += '</ul>'
+        $('.list-block').html(listItem)
+        // 效果
+        $('.item-link').on('click', function () {
+            if ($(this).next().css("display") === 'none') {
+                $(this).next().css("display", "table");
+            } else {
+                $(this).next().css("display", "none");
+            }
+        })
+        $('#close-popup').on('click', function () {
+            // window.webkit.messageHandlers.goback.postMessage("");
+            window.location.href = 'http://119.3.14.163:8080/feihuAppH5/result.html?'+new Date().getTime();
+        })
+      }
+    function test(repaycode,details){
+    　　//这个是ios操作系统
+        $('#repayMoneny').html((parseInt(details.retData.amount)).toFixed(2));
+            var listItem = "";
+            if(repaycode == '1'){
+            // 余额
+            $('.page').css("display","block");
+            $('#guanxi').html(repaycode);
+            $.each(details.retData.resultList, function (i, obj) {
+                listItem +=
+                        `<li class="item-content item-link">
+                            <div class="item-media">
+                                <i class="icon icon-f7"></i>
+                            </div>
+                            <div class="item-inner">
+                                <div class="item-title">` +
+                        obj.id +
+                        `</div>
+                                <div class="item-center">￥` + (
+                            obj.repaymentAmount / 100).toFixed(2) +
+                        `</div>
+                                <div class="item-after" style="width:10%"></div>
+                            </div>
+                        </li>`
+                    var pagePlanTime = obj.pagePlanTime
+                    listItem +=
+                        `<table class="table table-bordered table-striped">
+                            <thead class="font">
+                                <tr>
+                                    <th style="width: 30%;color:#999;text-align: left;padding-left: 30px;">笔数</th>
+                                    <th style="color:#999;text-align:left;padding-left:30px;">还款金额</th>
+                                    <th style="color:#999;" class="code">还款时间</th>
+                                </tr>
+                            </thead>
+                            <tbody>`
+                    $.each(obj.consList, function (j, value) {
+                        console.log(value.index)
+                        listItem +=
+                            ` <tr>
+                                <td class="alignment">
+                                    <code>` +
+                            value.id +
+                            `</code>
+                                </td>
+                                <td>¥` +
+                            (value.consAmount / 100).toFixed(2) +
+                            `</td>
+                                <td class="code">
+                                    ` +
+                            value.time +
+                            `
+                                </td>
+                            </tr>`
+                    })
+                    listItem += `</tbody></table> `
+                })
+            }else if(repaycode == '2') {
+                // 垫子
+                $('.page').css("display","none");
+                $.popup(".pop-demo");
+                var payPlan = details.retData;
+                var PayMsg = details.retMsg;
+                var date = getNowFormatDate();
+                $('.detail>.detail_left>p').html(payPlan.amount)
+                $('.detail>.detail_right>p').html(payPlan.data.length + '期')
+                var tempStr =
+                    `<ul class="font">
+                    <li class="thead">
+                        <span class="cloumFirst">期数</span>
+                        <span class="cloumSec">还款日期</span>
+                        <span class="cloumThird">还款金额</span>
+                    </li>`;
+                var num = 1;
+                var tempSubstr = '';
+
+                $.each(payPlan.data, function (i, obj) {
+                    tempStr += `<li class="list">
+                        <span class="cloumFirst">第` + num +
+                        `期</span>
+                        <span class="cloumSec">` +
+                        date + `</span>
+                        <span class="cloumThird"> ￥` + obj.bramount + `</span>
+                    </li>
+                `
+                    tempStr += `<ul class="accrual">`;
+                    if (!(num > payPlan.num)) {
+                        num++;
+                    }
+                    $('.table').html(tempStr)
+                    $.each(obj.chargeorder, function (j, value) {
+                        console.log(value)
+                        tempStr += `<li>
+                            <span class="cloumFirst">` + value.handle +
+                            `</span>
+                            <span class="cloumSec"></span>
+                            <span class="cloumThird">` + value.chamount +
+                            `</span>
+                        </li>`
+                    })
+                    tempStr += `</ul>`;
+            })
+            tempStr += `</ul>`
+            $('.table').html(tempStr)
+            $('.list').on('click', function(){
+                if($(this).next().show()){
+                    $(this).next().hide()
+                }else{
+                    $(this).next().show()
+                }
+            })
+
+        }
+        listItem += '</ul>'
+        $('.list-block').html(listItem)
+        // 效果
+        $('.item-link').on('click', function () {
+            if ($(this).next().css("display") === 'none') {
+                $(this).next().css("display", "table");
+            } else {
+                $(this).next().css("display", "none");
+            }
+        })
+        $('#close-popup').on('click', function () {
+            // window.webkit.messageHandlers.goback.postMessage("")
+            window.location.href = 'http://119.3.14.163:8080/feihuAppH5/result.html?'+new Date().getTime();
+        })
+    }
+
+    $('#btnSubmit>button').click(function(){
+        // window.webkit.messageHandlers.goback.postMessage("")
+        window.location.href = 'http://119.3.14.163:8080/feihuAppH5/result.html?'+new Date().getTime();
+    })
+
+    
+</script>
+
+</html>

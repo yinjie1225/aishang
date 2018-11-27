@@ -1,0 +1,48 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+ul{
+    list-style: none;
+}
+header{
+    /* background: -webkit-linear-gradient(left, red , #ff636a); 
+  background: -o-linear-gradient(right, #fe876d, #ff636a); 
+  background: -moz-linear-gradient(right, #fe876d, #ff636a); 
+  background: linear-gradient(to right, #fe876d , #ff636a);  */
+  /* background-color: #f8f8f8; */
+  background-color: red;
+}
+.buttonBefore{
+    background: rgb(220,223,230)
+}
+.buttonActive{
+    /* background: -webkit-linear-gradient(left, red , #ff636a); 
+    background: -o-linear-gradient(right, #fe876d, #ff636a); 
+    background: -moz-linear-gradient(right, #fe876d, #ff636a); 
+    background: linear-gradient(to right, #fe876d , #ff636a);  */
+    background-color: rgb(255,99,106);
+}
+html{
+    touch-action: none
+}
+.picker-modal .bar{
+    background: white;
+}
+.bar .button.pull-right{
+    color: rgb(255,99,106);
+}
+.picker-modal .bar .title{
+    font-size: 15px;
+    color: #999999;
+}
+.picker-modal .picker-modal-inner{
+    background: white;
+}
+.picker-items{
+    -webkit-mask-box-image: none;
+    font-size: 0.95rem;
+}
+body{
+    overflow: auto;
+}

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport"  content="width=width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" type="text/css" href="./css/sm.min.css?time=" +new Date().getTime() />
+    <link rel="stylesheet" type="text/css" href="./css/details.css?time=" +new Date().getTime() />
+    <link rel="stylesheet" href="./css/reset.css?time=" +new Date().getTime() />
+    <script src="./js/rem-two.js"></script>
+    <style type="text/css">
+        .channelShow{
+            overflow: auto;
+            background-color: #f6f6f6;
+        }
+        .bar {
+            background: #fff;
+            position: absolute;
+            top: 0px;
+        }
+        .content{
+            padding: 0;
+            margin: 0;
+        }
+        .select-icon{
+            display: inline-block;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            /*background: #8e8e93;*/
+        }
+        .downIcon{
+            vertical-align: top;
+            margin-left: 4px;
+        }
+        .open-time{
+            display: inline-block;
+            margin-left: 4px;
+        }
+        table{
+            width: 100%;
+            border: 1px solid rgba(7,17,27,0.1);
+            background: #fff;
+        }
+        th,td{
+            text-align: center;
+            height: 40px;
+            line-height: 40px;
+            border: 1px solid rgba(7,17,27,0.1)
+        }
+    </style>
+</head>
+<body>
+    <div class="channelShow">
+        <!--<header class="bar bar-nav">-->
+            <!--<a class="button button-link button-nav pull-left backClass" href="javascript:void(0);" data-transition='slide-out'>-->
+                <!--<span class="icon icon-left"></span>-->
+            <!--</a>-->
+            <!--<h1 class="title" style="color: black;">通道说明</h1>-->
+        <!--</header>-->
+        <div class="content">
+            <div class="content-wrapper">
+                <div class="select-icon">
+                    <span style="font-size: 14px;font-family: PingFang-SC-Bold;">通道名称</span>
+                    <span class="icon icon-down downIcon"></span>
+                </div>
+                <div class="open-time" style="font-size: 14px;font-family: PingFang-SC-Bold;">
+                    <span>开放时间：</span>
+                    <span class="time"></span>
+                </div>
+                <div class="table">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>银行类型</th>
+                                <th>单笔最低限额(元)</th>
+                                <th>单笔限额(万)</th>
+                                <th>日累计限额(万)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list">
+                        </tbody>
+                    </table>
+                        <!-- 加载提示符 -->
+                        <!--<div class="infinite-scroll-preloader">-->
+                            <!--<div class="preloader"></div>-->
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type='text/javascript' src="./js/zepto.min.js?time=" +new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/sm.min.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/popup.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script>
+    var a = [
+        ['建设银行',200,2,5],['光大银行',200,2,5],['民生银行',200,2,5], ['浦发银行',200,2,5],['广发银行',200,2,5],['农业银行',200,2,5],['兴业银行',200,2,5],
+        ['工商银行',200,2,5],['华夏银行',200,2,5],['中国银行',200,2,5],['中国邮政储蓄银行',200,2,5],['上海银行',200,2,5],['广州农村商业银行',200,2,5],
+        ['云南省农村信用社',200,2,5],['宁夏银行',200,2,5],['哈尔滨商行',200,2,5], ['北京银行',200,2,5],['浙商银行',200,2,5],['重庆农村商业银行',200,2,5],
+        ['浙江省农村信用社联合社',200,2,5],['温州银行',200,2,5],['广东顺德农村商业银行',200,2,5],['台州银行',200,2,5],['徽商银行',200,2,5],
+        ['湖南农信',200,2,5],['浙江泰隆商业银行',200,2,5],['兰州银行',200,2,5],['浙江民泰商业银行',200,2,5],['大连银行',200,2,5],['花旗中国',200,2,5],
+        ['乌鲁木齐市商业银行',200,2,5],['江苏银行',200,2,5],['宁波银行',200,2,5],['南昌银行',200,2,5],['香港上海汇丰银行有限公司',200,2,5],
+        ['临汾市尧都区农村信用合作联社',200,2,5],['东莞商行',200,2,5],['天津市商业银行',200,2,5],['黄河农村商业银行',200,2,5],['广西北部湾银行',200,2,5],
+        ['江苏省农村信用社联合社',200,2,5],['杭州市商业银行',200,2,5],['富滇银行',200,2,5],['汉口银行',200,2,5],['鄞州农村合作银行',200,2,5],
+        ['浙江稠州商业银行',200,2,5],['青海银行',200,2,5],['福建省农村信用社联合社',200,2,5],['吉林银行',200,2,5],['鄂尔多斯银行股份有限公司',200,2,5],['临商银行',200,2,5],
+        ['金华银行股份有限公司',200,2,5],['盛京银行',200,2,5],['中信银行',200,2,5],['北京农村商业银行',200,2,5],['日照银行',200,2,5],['南京银行',200,2,5],
+        ['龙江银行股份有限公司',200,2,5],['东亚银行',200,2,5],['九江银行股份有限公司',200,2,5],['成都农村商业银行',200,2,5],['广州银行',200,2,5],['哈尔滨银行',200,2,5],
+        ['河北银行',200,2,5],['宁波鄞州农村合作银行',200,2,5],['平安银行',200,2,5],['上海农商银行',200,2,5],['泰隆银行',200,2,5],['邮储银行',200,2,5],
+        ['长沙银行',200,2,5],['重庆银行',200,2,5],
+    ];
+    var b = [
+        ['工行','/',5,5],['农行','/',2,5],['中行','/',0.5,0.5],['建行','/',4,5],['邮储','/',0.5,2],['招行','/',0.5,0.5],
+        ['平安','/',5,5],['民生','/',4.5,4.5],['光大','/',0.5,0.5],['华夏','/',3,3],['广发','/',5,5],
+        ['浦发','/',0.1,0.1],['中信','/',5,5],['兴业','/',4,'单月累计5w'],['上海','/',0.5,0.5],['北京','/',0.5,0.5]
+    ];
+    var c = [
+        ['恒丰银行',100,2,5],['渤海银行',100,2,5],['厦门银行',100,2,5],['吉林银行',100,2,5],['宁波银行',100,2,5],
+        ['齐鲁银行',100,2,5],['温州银行',100,2,5],['广州银行',100,2,5],['汉口银行',100,2,5],['大连银行',100,2,5],
+        ['苏州银行',100,2,5],['河北银行',100,2,5],['杭州银行',100,2,5],['南京银行',100,2,5],['东莞银行',100,2,5],
+        ['成都银行',100,2,5],['天津银行',100,2,5],['宁夏银行',100,2,5],['哈尔滨银行',100,2,5],['徽商银行',100,2,5],
+
+        ['重庆银行',100,2,5],['西安银行',100,2,5],['青岛银行',100,2,5],['吉林市商业银行',100,2,5],['泉州银行',100,2,5],
+        ['内蒙古银行',100,2,5],['南宁银行',100,2,5],['连云港银行',100,2,5],['南粤银行',100,2,5],['桂林银行',100,2,5],
+        ['徐州银行',100,2,5],['柳州银行',100,2,5],['温州市商业银行',100,2,5],['武汉市商业银行',100,2,5],['江苏银行股份有限公司',100,2,5],
+        ['江苏银行',100,2,5],['稠州银行',100,2,5],['厦门国际',100,2,5],['海南银行',100,2,5],['邯郸银行',100,2,5],['三湘银行',100,2,5]
+    ];
+    var d = [
+        ['中国银行',100,2,10],['中国工商',100,2,10],['建设银行',100,2,10],['光大银行',100,2,10],['北京银行',100,2,10],
+        ['民生银行',100,2,10],['广发银行',100,2,10],['兴业银行',100,2,10],['平安银行',100,2,10],['农业银行',100,2,10],
+        ['国家开发银行',100,2,10],['中国进出口银行',100,2,10],['中国农业发展银行',100,2,10],['中信银行',100,2,10],['华夏银行',100,2,10],
+        ['招商银行',100,2,10],['恒丰银行',100,2,10],['浙商银行',100,2,10],['汇丰银行',100,2,10],['东亚银行',100,2,10],
+        ['南洋商业银行',100,2,10],['恒生银行',100,2,10],['深圳发展银行',100,2,10],['杭州银行',100,2,10],['南京银行',100,2,10],
+        ['北京农村商业银行',100,2,10],
+
+    ];
+    var e = [
+        ['中国银行',100,2,10],['建设银行',100,2,10],['中信银行',100,2,10],['广发银行',100,2,10],
+        ['民生银行',100,2,10],['平安银行',100,2,10],['华夏银行',100,2,10],['北京银行',100,2,10],
+        ['上海银行',100,2,10],['光大银行',100,2,10],['中国邮政储蓄银行',100,2,10],['交通银行',100,2,10],
+        ['招商银行',100,2,10],['兴业银行',100,2,10],['浦发银行',100,2,10],
+    ];
+    var defstr = ''
+    for(var i=0; i<a.length; i++){
+        var str = '<tr class="list-item">';
+        for(var j=0;j<a[i].length;j++){
+            str+='<td>'+a[i][j]+'</td>';
+        }
+        str+= '</tr>';
+        defstr+= str;
+    }
+    $('.list').append(defstr);
+    $('.time').append('09:00-21:00(每天)');
+
+    $(document).on('click','.select-icon', function () {
+        var buttons1 = [
+            {
+                text: '请选择',
+                label: true
+            },
+            {
+                text: '快捷通道A',
+                bold: true,
+                onClick: function() {
+                    var lia = ''
+                    for(var i=0; i<a.length; i++){
+                        var str = '<tr class="list-item">';
+                        for(var j=0;j<a[i].length;j++){
+                            str+='<td>'+a[i][j]+'</td>';
+                        }
+                         str+= '</tr>';
+                        lia+= str;
+                    }
+                    $('.list').html(lia);
+                    $('.time').html('09:00-21:00(每天)');
+                }
+            },
+            {
+                text: '快捷通道B',
+                onClick: function() {
+                    var lib = ''
+                    for(var i=0; i<b.length; i++){
+                        var str = '<tr class="list-item">';
+                        for(var j=0;j<b[i].length;j++){
+                            str+='<td>'+b[i][j]+'</td>';
+                        }
+                        str+= '</tr>';
+                        lib+= str;
+                    }
+                    $('.list').html(lib);
+                    $('.time').html('07:00-23:00(每天)');
+                }
+            },
+            {
+                text: '快捷通道C',
+                onClick: function() {
+                    var lic = ''
+                    for(var i=0; i<c.length; i++){
+                        var str = '<tr class="list-item">';
+                        for(var j=0;j<c[i].length;j++){
+                            str+='<td>'+c[i][j]+'</td>';
+                        }
+                        str+= '</tr>';
+                        lic+= str;
+                    }
+                    $('.list').html(lic);
+                    $('.time').html('09:00-22:00(每天)');
+                }
+            },
+            {
+                text: '快捷通道D',
+                onClick: function() {
+                    var lie = ''
+                    for(var i=0; i<e.length; i++){
+                        var str = '<tr class="list-item">';
+                        for(var j=0;j<e[i].length;j++){
+                            str+='<td>'+e[i][j]+'</td>';
+                        }
+                        str+= '</tr>';
+                        lie+= str;
+                    }
+                    $('.list').html(lie);
+                    $('.time').html('09:00-22:00(每天)');
+                }
+            },
+            {
+                text: '快捷通道E',
+                onClick: function() {
+                    var lid = ''
+                    for(var i=0; i<d.length; i++){
+                        var str = '<tr class="list-item">';
+                        for(var j=0;j<d[i].length;j++){
+                            str+='<td>'+d[i][j]+'</td>';
+                        }
+                        str+= '</tr>';
+                        lid+= str;
+                    }
+                    $('.list').html(lid);
+                    $('.time').html('09:00-22:00(每天)');
+                }
+            }
+        ];
+        var buttons2 = [
+            {
+                text: '取消',
+                bg: 'danger'
+            }
+        ];
+        var groups = [buttons1,buttons2];
+        $.actions(groups);
+    })
+</script>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>注册</title>
+    <link rel="stylesheet" type="text/css" href="./css/sm.min.css"/>
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="title items">
+        <img src="./img/logo_feihucreditcard@2x.png" alt=""/>
+    </div>
+    <div class="items options">
+        <div class="inps">
+            <input type="text" class="phone" placeholder="请输入手机号"/>
+        </div>
+        <div class="inps" id="autoDate">
+            <input type="tel" class="message" placeholder="请输入验证码"/>
+            <div class="subInps getcode">获取验证码</div>
+        </div>
+        <div class="inps">
+            <input type="text" class="login-pwd" placeholder="请设置登录密码"/>
+        </div>
+        <!-- 邀请码回显 -->
+        <div class="inps">
+            <input type="text" placeholder="邀请码" class="invite" readonly/>
+        </div>
+        <div class="inps">
+            <div class="btn">立即注册</div>
+        </div>
+    </div>
+    <p class="fot">© 2018 爱尚还 AllRightsReserved</p>
+</div>
+<script src="./js/rem.js"></script>
+<script type='text/javascript' src="./js/zepto.min.js?time=" +new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/popup.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script src="//cdn.bootcss.com/eruda/1.5.2/eruda.min.js"></script>
+<!--<script>eruda.init();</script>-->
+<script src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+<script>
+  Zepto(function ($) {
+    var invite = getUrlParms('inviteCode');
+    $('.invite').val(invite);
+    var $$ = new Ygtoast();
+    // 对输入手机号码进行正则校验
+    var phone;
+    $('.phone').on('change', function () {
+      phone = $('.phone').val();
+      var regexpPhone = /^1[3|4|5|6|7|8|9]\d{9}$/;
+      if (!phone || !regexpPhone.test(phone)) {
+        $$.toast("手机号格式不正确");
+        $('.phone').val('');
+      }
+    })
+    // 点击发送验证码
+    var num = 60;
+    $('.getcode').on('click', function () {
+      var getcode = this;
+      getcode.disabled = true;
+      $.ajax({
+        url: UserAPIPost + "jnlife/user/regi/sms.jsonp",
+        type: "POST",
+        dataType: 'json',
+        async: false,
+        data: {
+          phone: phone
+        },
+        success: function (data) {
+          if (data.statusCode == "200") {
+            time = setInterval(function () {
+              num -= 1
+              $('.getcode').html(num + 's')
+              if (num < 0) {
+                clearInterval(time)
+                $('.getcode').html('获取验证码');
+                num = 60
+              }
+            }, 1000);
+            $$.toast('验证码获取成功');
+          } else if (data.statusCode == '300') {
+            $$.toast(data.message)
+            $('.message').val('');
+          } else {
+            $$.toast('服务器异常!!')
+          }
+        },
+        error: function (data, XMLHttpRequest, textStatus, errorThrown) {
+          console.log(data, XMLHttpRequest, textStatus, errorThrown);
+          $$.toast(errorThrown);
+        }
+      })
+    })
+
+    // 登录密码
+    var loginPassword;
+    $('.login-pwd').on('change', function () {
+      loginPassword = $('.login-pwd').val();
+      var regexpPwd = /^[a-zA-z0-9]{6,20}$/;
+      if (!loginPassword || !regexpPwd.test(loginPassword)) {
+        $$.toast("请设置6位登录密码");
+        $('.login-pwd').val('');
+      }
+    })
+
+    // 判断立即注册按钮是否可点击
+    $('.login-pwd').on('change', function () {
+      if ($('.login-pwd').val()) {
+        $('.btn').css("opacity", "1");
+      }
+    })
+    // 立即注册
+    $('.btn').on('click', function () {
+      var message = $('.message').val();
+      var loginPwd = $('.login-pwd').val();
+      var invite = $('.invite').val();
+      if (!message) {
+        $$.toast("验证码不能为空！")
+        return;
+      }
+      if (!loginPwd) {
+        $$.toast("登录密码不能为空！")
+        return;
+      }
+      if (!invite) {
+        $$.toast("邀请码不能为空！")
+        return;
+      }
+
+      var UserAPIPost = UserAPIPost ? UserAPIPost : 'http://wap.life.hzjieniu.com/'
+      $.ajax({
+        type: 'POST',
+        url: UserAPIPost + '/jnlife/user/regi/submit.jsonp',
+        dataType: 'json',
+        async: false,
+        data: {
+          loginName: phone,
+          smsCode: $('.message').val(),
+          loginPass: loginPassword,
+          orgInfo: invite
+        },
+        success: function (data) {
+          console.log(data);
+          if (data.statusCode == '200') {
+            $$.toast(data.message)
+            window.location.href = 'http://feihu.xzsinfo.com/'
+          } else if (data.statusCode == '300') {
+            $$.toast(data.message)
+            $('.login-pwd').val();
+          } else {
+            $$.toast(data.message)
+          }
+        },
+        error: function () {
+          $$.toast("后端异常！！")
+        }
+      })
+    })
+  })
+</script>
+</body>
+
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="viewport"
+          content="width=width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- <link rel="shortcut icon" href="./favicon.ico"> -->
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <meta http-equiv="Cache" content="no-cache">
+    <link rel="stylesheet" type="text/css" href="./css/sm.min.css?time=" +new Date().getTime()/>
+    <link rel="stylesheet" type="text/css" href="./css/details.css?time=" +new Date().getTime()/>
+    <link rel="stylesheet" href="./css/reset.css?time=" +new Date().getTime()/>
+    <script src="./js/rem-two.js"></script>
+    <style type="text/css">
+        .page,
+        .page-group {
+            background-color: rgb(246, 246, 246);
+
+        }
+
+        .content {
+            background-color: rgb(246, 246, 246);
+        }
+
+        .content-top-title {
+            text-align: center;
+            color: rgb(51, 51, 51);
+            font-size: 0.875rem;
+        }
+
+        .title_detail {
+            color: rgb(255, 99, 106);
+            font-size: 1.875rem;
+            text-align: center;
+        }
+
+        .content-top {
+            height: 6025rem;
+            padding: 5% 0;
+            margin-bottom: 10px;
+
+        }
+
+        .bar {
+            background-color: rgba(0, 0, 0, 0);
+            position: absolute;
+            top: 0px;
+        }
+
+        .content {
+            background: url('./img/invitef_bguh@2x.png');
+            background-size: cover;
+            margin: 0px;
+            position: relative;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-size: 100% 100%;
+            filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg-login.png', sizingMethod='scale');
+
+        }
+
+        .bar:after {
+            height: 0px;
+        }
+
+        .code {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: absolute;
+            top: 55%;
+        }
+
+        .img {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            position: absolute;
+            top: 54vh;
+        }
+
+        .img > canvas {
+            position: absolute;
+            left: 50%;
+            top: -20px;
+            margin-left: -50px;
+        }
+
+        .inviteCode {
+            width: 100%;
+            /* 还差一个描边 */
+            display: flex;
+            justify-content: center;
+            margin-top: 1.4rem;
+            position: absolute;
+            bottom: 18vh;
+
+        }
+
+        .inviteCode > .invite-content {
+            width: 75%;
+            border-radius: 0.5rem;
+            height: 2.8125rem;
+            padding: 0.5rem 0.6875rem;
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+        }
+
+        .inviteCode > .invite-content > input {
+            font-size: 1.25rem;
+            color: rgb(51, 51, 51);
+            width: 90%;
+            outline: none;
+            border: none;
+            text-align: center;
+        }
+
+        .inviteCode > .invite-content > .copeCode {
+            height: 1.8125rem;
+            color: rgb(255, 59, 57);
+            font-size: 0.75rem;
+            background: rgb(255, 226, 226);
+            width: 5.625rem;
+            border-radius: 0.5rem;
+            line-height: 1.875rem;
+            text-align: center;
+        }
+
+        .p {
+            width: 100%;
+            color: rgb(255, 238, 238);
+            font-size: 0.8125rem;
+            position: absolute;
+            bottom: 10vh;
+            text-align: center;
+        }
+
+        /* .bar .icon{
+            line-height: 1.1rem;
+            font-size: 0.5rem;
+        }
+        .bar .button-link{
+            line-height: 1.1rem;
+        } */
+        /* .title{
+            font-size: 0.5rem;
+            line-height: 1.1rem;
+        } */
+    </style>
+</head>
+
+<body style="overflow-y:auto">
+<div class="page-group">
+    <div class="page page-current">
+        <div class="content">
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left backClass" href="javascript:void(0);"
+                   data-transition='slide-out'>
+                    <span class="icon icon-left" style="color: white;"></span>
+                </a>
+                <h1 class="title" style="color: white;">邀请好友</h1>
+            </header>
+            <!-- <div class="code"> -->
+            <div class="img" id="qrcode">
+                <!--<img src="./img/qrcode_Invitecode.png" alt="">-->
+            </div>
+            <!--<canvas class='img' id='qrcode' bindlongtap='save'></canvas>-->
+            <div class="inviteCode">
+                <div class="invite-content">
+                    <input type="text" class="inps" id="input" readonly value="">
+                    <span class="copeCode" id="codeBtn" data-clipboard-target="#input">复制邀请码</span>
+                    <!-- <span class="copeCode" id="codeBtn">复制邀请码</span> -->
+                </div>
+            </div>
+            <p class="p">温馨提示：好友注册时需要填写此邀请码哦</p>
+            <!-- </div> -->
+        </div>
+    </div>
+</div>
+</body>
+<script type='text/javascript' src="./js/zepto.min.js?time=" +new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/sm.min.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/popup.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script type='text/javascript' src="./js/base64.js?time=" + new Date().getTime() charset='utf-8'></script>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+<!--<script type='text/javascript' src="./js/qrcode.min.js?time=" + new Date().getTime() charset='utf-8'></script>-->
+
+
+<script>
+  var b = new Base64();
+  // 加密
+  var str = b.encode("name")
+  //解密
+  str = b.decode(str);
+
+  var phone = getUrlParms("mobile")
+  // 显示部分
+  $('.inps').val(phone);
+  var mobile = "http://119.3.14.163:8080/feihuAppH5/register.html?inviteCode=" + phone + "&time=" + new Date().getTime();
+
+  $('.copeCode').click(function () {
+    var u = navigator.userAgent, app = navigator.appVersion;
+    var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //g
+    var isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+    if (isAndroid) {
+      //这个是安卓操作系统
+      AndroidJavascriptInterface.copycode(mobile);
+    }
+    if (isIOS) {
+      //这个是ios操作系统
+      window.webkit.messageHandlers.copycode.postMessage(mobile);
+    }
+  })
+  // var qrcode = new QRCode(document.getElementById("qrcode"), {
+  //     text: "http://119.3.14.163:8080/feihuAppH5/register.html?inviteCode="+ phone+"&time="+new Date().getTime(),
+  //     width: 128, //生成的二维码的宽度
+  //     height: 128, //生成的二维码的高度
+  //     colorDark : "#000000", // 生成的二维码的深色部分
+  //     colorLight : "#ffffff", //生成二维码的浅色部分
+  //     // correctLevel : QRCode.CorrectLevel.H
+  // });
+
+  $('#qrcode').qrcode({
+    correctLevel: 0,
+    width: 100,
+    height: 100,
+    text: "http://119.3.14.163:8080/feihuAppH5/register.html?inviteCode=" + phone + "&time=" + new Date().getTime(),  // 二维码数据
+  });
+
+</script>
+
+</html>
